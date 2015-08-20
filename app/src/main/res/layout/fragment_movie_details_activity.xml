@@ -1,0 +1,114 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.ajinkya.movieapp.Movie_details_activity$PlaceholderFragment">
+
+
+    <TextView android:text="@string/hello_world"
+        android:layout_width="fill_parent"
+        android:layout_height="100dp"
+        android:id="@+id/movie_name"
+        android:paddingLeft="20dp"
+        android:paddingTop="40dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:textColor="@android:color/white"
+        android:textStyle="bold"
+        android:background="#ff59fff4"
+        android:textSize="50sp"/>
+
+
+        <ImageView
+            android:layout_width="175dp"
+            android:layout_height="250dp"
+            android:id="@+id/imageView2"
+            android:layout_below="@+id/movie_name" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/Release_Year"
+            android:textSize="20sp"
+            android:id="@+id/release_date"
+            android:layout_below="@+id/movie_name"
+            android:layout_alignLeft="@+id/release_year"
+            android:layout_alignStart="@+id/release_year" />
+
+        <TextView
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/release_year"
+            android:textSize="30sp"
+            android:layout_marginBottom="20dp"
+            android:layout_below="@+id/release_date"
+            android:layout_alignLeft="@+id/ratings"
+            android:layout_alignStart="@+id/ratings" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/language"
+            android:textSize="20sp"
+            android:id="@+id/lang"
+            android:layout_below="@+id/release_year"
+            android:layout_alignLeft="@+id/ratings"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/language"
+            android:textSize="20sp"
+            android:layout_marginBottom="20dp"
+            android:layout_below="@+id/lang"
+            android:layout_alignLeft="@+id/ratings"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/rating"
+            android:id="@+id/ratings_text"
+            android:textSize="20sp"
+            android:layout_alignLeft="@+id/ratings"
+            android:layout_alignStart="@+id/ratings"
+            android:layout_below="@+id/language" />
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/ratings"
+            android:layout_marginLeft="54dp"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_below="@+id/ratings_text"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/imageView2"
+            android:layout_toEndOf="@+id/imageView2" />
+
+
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:paddingLeft="20dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/imageView2">
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="15dp"
+            android:id="@+id/desc"
+            android:scrollbars="vertical"
+
+           />
+
+    </LinearLayout>
+
+</RelativeLayout>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="options">
+        <item>@string/popularity_option</item>
+        <item>@string/votes_option</item>
+    </string-array>
+    <string-array name="values">
+        <item>@string/popularity_value</item>
+        <item>@string/votes_values</item>
+    </string-array>
+</resources>
