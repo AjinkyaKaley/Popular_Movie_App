@@ -7,8 +7,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 
+/**
+ * @Author: Ajinkya Kale
+ * 
+ * */
 public class MainActivity extends ActionBarActivity {
-
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,14 +25,20 @@ public class MainActivity extends ActionBarActivity {
 
     }
 
-
+    
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
-
+    
+    /**
+     * Starts the new activity which 
+     * contains the options to sort the 
+     * movie list
+     * */
+     
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
