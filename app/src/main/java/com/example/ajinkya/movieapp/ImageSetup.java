@@ -5,6 +5,11 @@ import android.os.Parcelable;
 
 /**
  * Created by Ajinkya on 7/25/2015.
+ * This class create the skeleton
+ * for the image and imageurls
+ * it implements parcelabe to inorder to send 
+ * this object across activities using intents
+ * 
  */
 public class ImageSetup implements Parcelable {
     String image, desc, title, popularity, release_date,lang;
