@@ -15,21 +15,33 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-
+/**
+ * This class does the background work
+ * of fetching the data from the themoviedb.org
+ * 
+ * @author ajinkya kale
+ * */
+ 
 public class FetchMovieData extends AsyncTask<String, Void, ImageSetup[]> {
     ImageSetup [] temp;
     String json_movie_data = null;
     private final String LOG_TAG = FetchMovieData.class.getSimpleName();
+    
+    // Default const
     public FetchMovieData() {
-
-
     }
 
 
-
+    /**
+     *  This method parses the Json object
+     *  and extracts the URL of the poster
+     * */
+     
     public ImageSetup[] extract_poster_url(String json_data) throws JSONException{
-
-        final String result_array = "results";
+        
+        // Tags
+        
+        final String result_array = "results";      
         final String movie_Poster_tag = "poster_path";
         final String movie_desc = "overview";
         final String title = "original_title";
@@ -56,6 +68,12 @@ public class FetchMovieData extends AsyncTask<String, Void, ImageSetup[]> {
         return result_poster_path;
     }
 
+    /**
+     * 
+     * This method populates the data on display activity
+     * basically it binds the aysn thread with main thread
+     * */
+     
     @Override
     protected void onPostExecute(ImageSetup[] final_data){
         if(final_data!=null){
@@ -65,26 +83,31 @@ public class FetchMovieData extends AsyncTask<String, Void, ImageSetup[]> {
             }
         }
     }
-
+    
+    /**
+     *  This is the method from aysntask class
+     *  this method performs api calls in background
+     *  and fetches the data
+     **/
+    
     @Override
     protected ImageSetup[] doInBackground(String... params) {
-        //android.os.Debug.waitForDebugger();
 
         HttpURLConnection url_connection = null;
         BufferedReader buffer_reader = null;
-
+        
+        // Base URL
         final String Base_URL = "http://api.themoviedb.org/3/discover/movie";
         final String private_key = "api_key";
-        final String API_KEY = "d4b134d2a30791b4f50cc14303096628";
+        final String API_KEY = "d4b134d2a30791b4f50cc14303096628"; // Api Key
         final String sort = "sort_by";
-        Log.v(LOG_TAG,params[0]);
 
         Uri built_uri = Uri.parse(Base_URL).buildUpon()
                 .appendQueryParameter(sort, params[0])
                 .appendQueryParameter(private_key,API_KEY).build();
 
-        Log.v(LOG_TAG,built_uri.toString());
-
+        // Building the URL
+        
         try {
             URL url = new URL(built_uri.toString());
             url_connection = (HttpURLConnection) url.openConnection();
@@ -96,37 +119,29 @@ public class FetchMovieData extends AsyncTask<String, Void, ImageSetup[]> {
             InputStream inputStream = url_connection.getInputStream();
             StringBuffer buffer = new StringBuffer();
             if (inputStream == null) {
-                // Nothing to do.
-                //json_movie_data = null;
                 return null;
             }
             buffer_reader = new BufferedReader(new InputStreamReader(inputStream));
 
             String line;
             while ((line = buffer_reader.readLine()) != null) {
-                // Since it's JSON, adding a newline isn't necessary (it won't affect parsing)
-                // But it does make debugging a *lot* easier if you print out the completed
-                // buffer for debugging.
                 buffer.append(line + "\n");
             }
 
-            Log.v(LOG_TAG+"------->",buffer.toString());
-
             if (buffer.length() == 0) {
-
                 return null;
             }
+            
             json_movie_data = buffer.toString();
-            Log.v(LOG_TAG, "Movie data : " + json_movie_data);
-
+            Log.v(LOG_TAG, "Movie data : " + json_movie_data); // Debug purpose
 
         } catch (IOException e) {
             Log.e("PlaceholderFragment", "Error ", e);
 
             json_movie_data = null;
-           // return null;
         }
-
+        
+        // If connection fails
         finally{
             if (url_connection != null) {
                 url_connection.disconnect();
@@ -138,11 +153,11 @@ public class FetchMovieData extends AsyncTask<String, Void, ImageSetup[]> {
                     Log.e("PlaceholderFragment", "Error closing stream", e);
                 }
             }
-
+            
+            // This code returns the poster url 
             try{
                 Log.v(LOG_TAG,json_movie_data);
                 temp = extract_poster_url(json_movie_data);
-
                 return temp;
             }
             catch (Exception e){
