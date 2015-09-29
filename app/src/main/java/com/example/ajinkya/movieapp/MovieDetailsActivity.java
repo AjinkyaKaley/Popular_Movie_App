@@ -16,6 +16,10 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
+/**
+ *  This class basically handles the last
+ *  step of displaying the data on to screen
+ * */
 
 public class MovieDetailsActivity extends ActionBarActivity {
 
@@ -42,9 +46,6 @@ public class MovieDetailsActivity extends ActionBarActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
